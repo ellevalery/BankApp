@@ -1,27 +1,62 @@
-public class Main {
+
+import java.util.Scanner;
+class User {
+    public User(String accountNumber) {
+
+    }
+
     public static void main(String[] args) {
-        Bank bank = new Bank();
+        Scanner scanner = new Scanner(System.in);
 
-        // Registering users
-        User user1 = new User(12345, 1000, "John Doe", "Male");
-        User user2 = new User(67890, 2000, "Jane Smith", "Female");
-        bank.addUser(user1);
-        bank.addUser(user2);
+        System.out.print("Enter your account number: ");
+        String accountNumber = scanner.nextLine();
 
-        // Performing operations
-        bank.displayUserBalance(12345); // Display balance for user with account number 12345
-        bank.creditUser(12345, 500); // Credit 500 to user with account number 12345
-        bank.displayUserBalance(12345);
-        bank.debitUser(12345, 200); // Debit 200 from user with account number 12345
-        bank.displayUserBalance(12345);
+        User user = new User(accountNumber);
 
-        // Replacing a user
-        User newUser = new User(12345, 5000, "John Doe", "Male");
-        bank.replaceUser(12345, newUser);
-        bank.displayUserBalance(12345);
+        int choice;
+        double amount;
+
+        do {
+        System.out.println("\nBank Application Menu");
+        System.out.println("1. Deposit");
+        System.out.println("2. Withdraw");
+        System.out.println("3. Check Balance");
+        System.out.println("4. Exit");
+        System.out.print("Enter your choice: ");
+        choice = scanner.nextInt();
+
+        switch (choice) {
+        case 1:
+        System.out.print("Enter the deposit amount: $");
+        amount = scanner.nextDouble();
+        user.deposit(amount);
+        break;
+        case 2:
+        System.out.print("Enter the withdrawal amount: $");
+        amount = scanner.nextDouble();
+        user.withdraw(amount);
+        break;
+        case 3:
+        user.checkBalance();
+        break;
+        case 4:
+        System.out.println("Thank you for using the bank app. Goodbye!");
+        break;
+default:
+        System.out.println("Invalid choice. Please try again.");
+        break;
+        }
+        } while (choice != 4);
+
+        scanner.close();
+        }
+
+    private void withdraw(double amount) {
+    }
+
+    private void checkBalance() {
+    }
+
+    private void deposit(double amount) {
     }
 }
-
-
-
-

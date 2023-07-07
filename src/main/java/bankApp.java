@@ -1,10 +1,8 @@
-import java.util.Scanner;
-
-class BankApp {
+public class bankApp {
     private double balance;
     private String accountNumber;
 
-    public BankApp(String accountNumber) {
+    public bankApp(String accountNumber) {
         this.accountNumber = accountNumber;
         this.balance = 0.0;
     }
