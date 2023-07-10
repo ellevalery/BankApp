@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import javax.swing.JOptionPane;
 
 public class User {
     private final String name;
@@ -18,7 +19,6 @@ public class User {
         this.accountCurrency = accountCurrency;
         this.balance = balance;
     }
-
 
     @Override
     public String toString() {
@@ -43,5 +43,16 @@ public class User {
     public String getAccountCurrency() {
         return accountCurrency;
     }
-}
 
+    public static void main(String[] args) {
+        String name = JOptionPane.showInputDialog(null, "Enter your name:");
+        String surname = JOptionPane.showInputDialog(null, "Enter your surname:");
+        String gender = JOptionPane.showInputDialog(null, "Enter your gender:");
+        long accountNumber = Long.parseLong(JOptionPane.showInputDialog(null, "Enter your account number:"));
+        String accountCurrency = JOptionPane.showInputDialog(null, "Enter your account currency:");
+        BigDecimal balance = new BigDecimal(JOptionPane.showInputDialog(null, "Enter your balance:"));
+
+        User user = new User(name, surname, gender, accountNumber, accountCurrency, balance);
+        JOptionPane.showMessageDialog(null, user.toString());
+    }
+}
