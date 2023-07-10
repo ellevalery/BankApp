@@ -1,33 +1,41 @@
-import java.util.Scanner;
+import java.math.BigDecimal;
 
-class BankApp {
-    private double balance;
-    private String accountNumber;
+public class User {
+    private final String name;
+    private final String surname;
+    private final String gender;
+    private final long accountNumber;
+    private final String accountCurrency;
+    private BigDecimal balance;
 
-    public BankApp(String accountNumber) {
+    public User(String name, String surname, String gender, long accountNumber, String accountCurrency, BigDecimal balance) {
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
         this.accountNumber = accountNumber;
-        this.balance = 0.0;
+        this.accountCurrency = accountCurrency;
+        this.balance = balance;
     }
 
-    public void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-            System.out.println("Deposited: $" + amount);
-        } else {
-            System.out.println("Invalid amount. Please try again.");
-        }
+    public BigDecimal getBalance() {
+        return balance;
     }
 
-    public void withdraw(double amount) {
-        if (amount > 0) {
-            if (balance >= amount) {
-                balance -= amount;
-                System.out.println("Withdrawn: $" + amount);
-            } else {
-                System.out.println("Insufficient funds.");
-            }
-        } else {
-            System.out.println("Invalid amount. Please try again.");
-        }
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+    public String getAccountCurrency() {
+        return accountCurrency;
+    }
+    @Override
+    public String toString() {
+        return "User " +
+                "name: '" + name + '\'' +
+                ", surname: '" + surname + '\'' +
+                ", gender: '" + gender + '\'' +
+                ", accountNumber: " + accountNumber +
+                ", mainCurrency: " + accountCurrency + '\'' +
+                ", balance: " + balance;
     }
 }
+
